@@ -5,7 +5,6 @@ This is a project for Daily Task 02 Chapter 06 in Binar Academy.
 - [Brahmasta Bagus Aryandra](https://github.com/Brahmastabagus)
 - [Muhammad Fadhlan Aqila](https://github.com/zodplugin)
 
-
 ## Run Locally  
 
 Clone the project  

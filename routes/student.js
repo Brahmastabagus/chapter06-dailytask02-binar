@@ -5,9 +5,9 @@ const studentController = require('../controllers/studentController')
 router.get('/', studentController.getStudents)
 
 // GET by ID
-// router.get('/:id', studentController.getIdStudent)
+router.get('/:id', studentController.getIdStudent)
 
 // DELETE
-// router.delete('/:id', studentController.deleteStudent)
+router.delete('/:id', studentController.deleteStudent)
 
 module.exports = router
