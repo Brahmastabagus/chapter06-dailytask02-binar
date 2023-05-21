@@ -2,7 +2,16 @@ const express = require('express')
 const routes = require('./routes')
 const path = require('path')
 const app = express()
+const cors = require('cors')
 const PORT = 8080
+
+app.use(
+  cors({
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  })
+)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
