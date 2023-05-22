@@ -110,7 +110,7 @@ const getIdStudent = async (req, res) => {
   try {
     // const { name, price, stock } = req.body
     const id = req.params.id
-    const data = await students.findOne({id: {id}})
+    const data = await students.findByPk(id)
 
     // TODO: Validasi apakah id ada
     if (data === null) {
@@ -136,7 +136,7 @@ const deleteStudent = async (req, res) => {
   try {
     const id = req.params.id
 
-    const dataId = await students.findOne({id: {id}})
+    const dataId = await students.findByPk(id)
 
     // TODO: Validasi apakah id ada
     if (dataId === null) {
