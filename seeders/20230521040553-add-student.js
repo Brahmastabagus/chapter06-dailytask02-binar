@@ -19,7 +19,7 @@ module.exports = {
         {
           name: 'Brahmasta Bagus Aryandra',
           nim: '20104021',
-          class: 'SE04A',
+          kelas: 'SE04A',
           generation: '2020',
           createdAt: '2023-05-21T14:00:07.369Z',
           updatedAt: '2023-05-21T10:08:51.886Z'
