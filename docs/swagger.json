@@ -15,17 +15,26 @@
     {
       "name": "student",
       "description": "Everything about students"
+    },
+    {
+      "name": "user",
+      "description": "Everything about users"
     }
   ],
   "paths": {
     "/students/": {
       "get": {
-        "tags": [
-          "student"
-        ],
+        "tags": ["student"],
         "summary": "Get students",
         "description": "Get all students.",
+
         "operationId": "getAllstudents",
+
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success get all students",
@@ -41,7 +50,43 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/Students"
+                        "type": "object",
+                        "properties": {
+                          
+                        "data": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "example": "1"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Brahmasta Bagus Aryandra"
+                            },
+                            "nim": {
+                              "type": "integer",
+                              "example": "20104021"
+                            },
+                            "kelas": {
+                              "type": "integer",
+                              "example": "SE04A"
+                            },
+                            "generation": {
+                              "type": "integer",
+                              "example": "2020"
+                            },
+                            "createdAt": {
+                              "type": "integer",
+                              "example": "2023-05-21T14:00:07.369Z"
+                            },
+                            "updatedAt": {
+                              "type": "integer",
+                              "example": "2023-05-21T14:00:07.369Z"
+                            }
+                          }
+                        }
+                        }
                       }
                     }
                   }
@@ -54,7 +99,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Res400"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "err.message"
+                    }
+                  }
                 }
               }
             }
@@ -62,12 +117,15 @@
         }
       },
       "post": {
-        "tags": [
-          "student"
-        ],
+        "tags": ["student"],
         "summary": "Create student",
         "description": "This is done to be able to login.",
         "operationId": "createStudestudent",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
         "requestBody": {
           "description": "Created student object",
           "content": {
@@ -134,12 +192,15 @@
     },
     "/students/{id}": {
       "get": {
-        "tags": [
-          "student"
-        ],
+        "tags": ["student"],
         "summary": "Get student",
         "description": "Get student by id.",
         "operationId": "getStudentById",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -165,7 +226,46 @@
                       "example": "Success"
                     },
                     "data": {
-                      "$ref": "#/components/schemas/Students"
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          
+                        "data": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "example": "1"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Brahmasta Bagus Aryandra"
+                            },
+                            "nim": {
+                              "type": "integer",
+                              "example": "20104021"
+                            },
+                            "kelas": {
+                              "type": "integer",
+                              "example": "SE04A"
+                            },
+                            "generation": {
+                              "type": "integer",
+                              "example": "2020"
+                            },
+                            "createdAt": {
+                              "type": "integer",
+                              "example": "2023-05-21T14:00:07.369Z"
+                            },
+                            "updatedAt": {
+                              "type": "integer",
+                              "example": "2023-05-21T14:00:07.369Z"
+                            }
+                          }
+                        }
+                        }
+                      }
                     }
                   }
                 }
@@ -195,12 +295,15 @@
         }
       },
       "put": {
-        "tags": [
-          "student"
-        ],
+        "tags": ["student"],
         "summary": "Update student",
         "description": "This is done to be able to login.",
         "operationId": "updateStudent",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -287,12 +390,15 @@
         }
       },
       "delete": {
-        "tags": [
-          "student"
-        ],
+        "tags": ["student"],
         "summary": "Delete student",
         "description": "Delete student by id.",
         "operationId": "deleteStudentById",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -326,7 +432,7 @@
               }
             }
           },
-          "404": {
+          "400": {
             "description": "Data not found",
             "content": {
               "application/json": {
@@ -336,12 +442,230 @@
               }
             }
           },
-          "400": {
+          "401": {
             "description": "Failed bad request",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Res400"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["user"],
+        "summary": "Login User",
+        "description": "Login User Account",
+        "operationId": "loginUser",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "requestBody": {
+          "description": "Created student object",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/user"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success to login app",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "1"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "school@gmail.com"
+                        },
+                        "password": {
+                          "type": "integer",
+                          "example": "$2b$10$0HOfIBpHjcCBhxjVY0fRJOh71KWKU9Q15xFzM952kQ0sm.id/d0RO"
+                        },
+                        "createdAt": {
+                          "type": "integer",
+                          "example": "2023-05-22T08:51:55.898Z"
+                        },
+                        "updatedAt": {
+                          "type": "integer",
+                          "example": "2023-05-22T08:51:55.898Z"
+                        },
+                        "token":{
+                          "type": "string",
+                          "example":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJha3VAZ21haWwiLCJpYXQiOjE2ODQ3NDczMzN9.i6D9FYxbaGeGkQ5m4iprZmgDtP0yDef3ikSp16bc6UE"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "one or more incomplete data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "user gak ketemu"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "tags": ["user"],
+        "summary": "Create User",
+        "description": "Register User Account",
+        "operationId": "RegisterUser",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "requestBody": {
+          "description": "Created User Account",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/user"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success to Register Account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "1"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "school@gmail.com"
+                        },
+                        "password": {
+                          "type": "integer",
+                          "example": "$2b$10$0HOfIBpHjcCBhxjVY0fRJOh71KWKU9Q15xFzM952kQ0sm.id/d0RO"
+                        },
+                        "createdAt": {
+                          "type": "integer",
+                          "example": "2023-05-22T08:51:55.898Z"
+                        },
+                        "updatedAt": {
+                          "type": "integer",
+                          "example": "2023-05-22T08:51:55.898Z"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "one or more incomplete data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Data tidak lengkap"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400*": {
+            "description": "passwords not allowed",
+            "content": {
+              "application/json": {
+                
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Password tidak sesuai harap terdapat 1 digit, 1 lowercase , 1 uppercase dan dengan panjang 6-10"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400**": {
+            "description": "e-mail already exists",
+            "content": {
+              "application/json": {
+                
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Email sudah ada"
+                    }
+                  }
                 }
               }
             }
@@ -368,12 +692,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "name",
-          "nim",
-          "class",
-          "generation"
-        ]
+        "required": ["name", "nim", "class", "generation"]
       },
       "Students": {
         "type": "object",
@@ -413,6 +732,39 @@
           }
         }
       },
+      "user": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": ["email", "password"]
+      },
+      "users": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "school@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "$2b$10$0HOfIBpHjcCBhxjVY0fRJOh71KWKU9Q15xFzM952kQ0sm.id/d0RO"
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2023-05-22T08:51:55.898Z"
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2023-05-22T08:51:55.898Z"
+          }
+        }
+      },
       "NotFound": {
         "type": "object",
         "properties": {
@@ -438,6 +790,12 @@
             "example": "Cannot proccess"
           }
         }
+      }
+    },
+    "securitySchemes": {
+      "bearerToken": {
+        "type": "http",
+        "scheme": "bearer"
       }
     }
   }
