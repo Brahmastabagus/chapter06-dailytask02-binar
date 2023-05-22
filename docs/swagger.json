@@ -52,40 +52,39 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          
-                        "data": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "example": "1"
-                            },
-                            "name": {
-                              "type": "string",
-                              "example": "Brahmasta Bagus Aryandra"
-                            },
-                            "nim": {
-                              "type": "integer",
-                              "example": "20104021"
-                            },
-                            "kelas": {
-                              "type": "integer",
-                              "example": "SE04A"
-                            },
-                            "generation": {
-                              "type": "integer",
-                              "example": "2020"
-                            },
-                            "createdAt": {
-                              "type": "integer",
-                              "example": "2023-05-21T14:00:07.369Z"
-                            },
-                            "updatedAt": {
-                              "type": "integer",
-                              "example": "2023-05-21T14:00:07.369Z"
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "1"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Brahmasta Bagus Aryandra"
+                              },
+                              "nim": {
+                                "type": "integer",
+                                "example": "20104021"
+                              },
+                              "kelas": {
+                                "type": "integer",
+                                "example": "SE04A"
+                              },
+                              "generation": {
+                                "type": "integer",
+                                "example": "2020"
+                              },
+                              "createdAt": {
+                                "type": "integer",
+                                "example": "2023-05-21T14:00:07.369Z"
+                              },
+                              "updatedAt": {
+                                "type": "integer",
+                                "example": "2023-05-21T14:00:07.369Z"
+                              }
                             }
                           }
-                        }
                         }
                       }
                     }
@@ -230,40 +229,39 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          
-                        "data": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "example": "1"
-                            },
-                            "name": {
-                              "type": "string",
-                              "example": "Brahmasta Bagus Aryandra"
-                            },
-                            "nim": {
-                              "type": "integer",
-                              "example": "20104021"
-                            },
-                            "kelas": {
-                              "type": "integer",
-                              "example": "SE04A"
-                            },
-                            "generation": {
-                              "type": "integer",
-                              "example": "2020"
-                            },
-                            "createdAt": {
-                              "type": "integer",
-                              "example": "2023-05-21T14:00:07.369Z"
-                            },
-                            "updatedAt": {
-                              "type": "integer",
-                              "example": "2023-05-21T14:00:07.369Z"
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "1"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Brahmasta Bagus Aryandra"
+                              },
+                              "nim": {
+                                "type": "integer",
+                                "example": "20104021"
+                              },
+                              "kelas": {
+                                "type": "integer",
+                                "example": "SE04A"
+                              },
+                              "generation": {
+                                "type": "integer",
+                                "example": "2020"
+                              },
+                              "createdAt": {
+                                "type": "integer",
+                                "example": "2023-05-21T14:00:07.369Z"
+                              },
+                              "updatedAt": {
+                                "type": "integer",
+                                "example": "2023-05-21T14:00:07.369Z"
+                              }
                             }
                           }
-                        }
                         }
                       }
                     }
@@ -511,9 +509,9 @@
                           "type": "integer",
                           "example": "2023-05-22T08:51:55.898Z"
                         },
-                        "token":{
+                        "token": {
                           "type": "string",
-                          "example":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJha3VAZ21haWwiLCJpYXQiOjE2ODQ3NDczMzN9.i6D9FYxbaGeGkQ5m4iprZmgDtP0yDef3ikSp16bc6UE"
+                          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJha3VAZ21haWwiLCJpYXQiOjE2ODQ3NDczMzN9.i6D9FYxbaGeGkQ5m4iprZmgDtP0yDef3ikSp16bc6UE"
                         }
                       }
                     }
@@ -632,7 +630,6 @@
             "description": "passwords not allowed",
             "content": {
               "application/json": {
-                
                 "schema": {
                   "type": "object",
                   "properties": {
@@ -653,7 +650,6 @@
             "description": "e-mail already exists",
             "content": {
               "application/json": {
-                
                 "schema": {
                   "type": "object",
                   "properties": {
