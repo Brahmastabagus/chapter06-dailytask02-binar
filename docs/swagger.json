@@ -145,19 +145,56 @@
                   "properties": {
                     "status": {
                       "type": "string",
-                      "example": "Success"
+                      "example": "success"
                     },
                     "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/Students"
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "1"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Brahmasta Bagus Aryandra"
+                              },
+                              "nim": {
+                                "type": "integer",
+                                "example": "20104021"
+                              },
+                              "kelas": {
+                                "type": "integer",
+                                "example": "SE04A"
+                              },
+                              "generation": {
+                                "type": "integer",
+                                "example": "2020"
+                              },
+                              "createdAt": {
+                                "type": "integer",
+                                "example": "2023-05-21T14:00:07.369Z"
+                              },
+                              "updatedAt": {
+                                "type": "integer",
+                                "example": "2023-05-21T14:00:07.369Z"
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
               }
             }
           },
-          "409": {
-            "description": "Price must be above 10.000",
+          "401": {
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -169,19 +206,29 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Harga harus diatas 10.000"
+                      "example": "data nim tidak sesuai. pastikan digit pada nim!"
                     }
                   }
                 }
               }
             }
           },
-          "400": {
-            "description": "Failed bad request",
+          "401": {
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Res400"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "data tidak lengkap"
+                    }
+                  }
                 }
               }
             }
@@ -275,7 +322,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NotFound"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Data dengan id 1, tidak ditemukan"
+                    }
+                  }
                 }
               }
             }
@@ -285,7 +342,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Res400"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "err.message"
+                    }
+                  }
                 }
               }
             }
@@ -325,7 +392,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Success Update student",
             "content": {
               "application/json": {
@@ -338,15 +405,15 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Data dengan index 2 telah berhasil terupdate"
+                      "example": "data dari id ${id} nya berhasil berubah"
                     }
                   }
                 }
               }
             }
           },
-          "409": {
-            "description": "Price must be above 10.000",
+          "400": {
+            "description": "Data Update Not Complete",
             "content": {
               "application/json": {
                 "schema": {
@@ -358,7 +425,27 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Harga harus diatas 10.000"
+                      "example": "data tidak lengkap"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Data not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "data nim tidak sesuai. pastikan digit pada nim!"
                     }
                   }
                 }
@@ -366,21 +453,21 @@
             }
           },
           "404": {
-            "description": "Data not found",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NotFound"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Failed bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Res400"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "data tidak ditemukan"
+                    }
+                  }
                 }
               }
             }
@@ -430,22 +517,42 @@
               }
             }
           },
-          "400": {
+          "404": {
             "description": "Data not found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NotFound"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "data dengan id 1 tidak ditemukan"
+                    }
+                  }
                 }
               }
             }
           },
-          "401": {
+          "400": {
             "description": "Failed bad request",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Res400"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "err.message"
+                    }
+                  }
                 }
               }
             }
